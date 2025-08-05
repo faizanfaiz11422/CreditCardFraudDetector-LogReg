@@ -1,24 +1,24 @@
 🧠 Credit Card Fraud Detection Using Logistic Regression
-A robust, modular machine learning pipeline for binary classification of credit card transactions. This project blends data preprocessing, scaling, class-wise sampling, regularized logistic regression training, and CSV logging — topped with a PyQt5 UI.
+A robust, modular machine learning pipeline for binary classification of credit card transactions. This project blends data preprocessing, scaling, class-wise sampling, regularized logistic regression training, and CSV logging—topped with a PyQt5 UI.
 
 📦 Structure
-plaintext
 Logistic Regression/
 ├── Logistic_regression.py     # Core logic: Data prep, scaling, training
 ├── prediction.py              # Prediction pipeline (loaded weights & bias)
 ├── creditcard.csv             # Non-fraudulent transactions
 ├── creditcard1.csv            # Fraudulent transactions
 ├── README.md                  # This doc
+
 📊 Dataset Overview
 Source: Anonymized credit card transaction data
 
 Classes:
 
-Class 0: Non-fraudulent (creditcard.csv)
+Class 0: Non-fraudulent (from creditcard.csv)
 
-Class 1: Fraudulent (creditcard1.csv)
+Class 1: Fraudulent (from creditcard1.csv)
 
-Challenges: High class imbalance, requiring manual undersampling and separation
+Challenges: High class imbalance, requiring manual undersampling and separation.
 
 ⚙️ How It Works
 💾 Data Preprocessing
@@ -39,17 +39,16 @@ Sigmoid function
 
 Cost function with optional L2 regularization
 
-Gradient descent with regularized weight update
+Gradient descent with regularized weight updates
 
 Saving trained weights (theta.npy) and bias (bias.npy) for deployment
 
 🧪 Testing
-Preprocessed test sets saved as NumPy arrays (test_x.npy, test_y.npy)
+Preprocessed test sets are saved as NumPy arrays (test_x.npy, test_y.npy).
 
-Run prediction.py to perform inference using saved weights
+Run prediction.py to perform inference using the saved weights.
 
 🧮 Key Functions (from code)
-python
 def sigmoid(X, theta, B):
     return 1 / (1 + np.exp(-(np.dot(theta, X.T) + B)))
 
@@ -60,31 +59,32 @@ def cost(X, y, theta):
 def gradient_descent(X, y, theta, B, alpha, iterations):
     # Weight updates via backpropagation
     ...
+
 🖼️ UI & Visualization
 UI built with PyQt5
 
 CSV logging of predictions
 
-Future enhancements could include ROC curve visualization and class distribution charts
+Future enhancements could include ROC curve visualization and class distribution charts.
 
 📌 To Run
 Installation
-bash
 pip install numpy pandas scikit-learn PyQt5
+
 Training
-bash
 python Logistic_regression.py
+
 Prediction
-bash
 python prediction.py
+
 🚀 Potential Enhancements
-Switch from manual cost calculation to scikit-learn or statsmodels for benchmarking
+Switch from manual cost calculation to scikit-learn or statsmodels for benchmarking.
 
-ROC-AUC and Precision-Recall metrics
+Implement ROC-AUC and Precision-Recall metrics.
 
-LLM-based UI overlay for fraud pattern explanation
+Add an LLM-based UI overlay for fraud pattern explanation.
 
-FastAPI endpoint for real-time deployment
+Create a FastAPI endpoint for real-time deployment.
 
 👨‍💻 Author
 Faizan — AI/ML Engineer 🔧 Specializing in scalable, web-integrated ML/DL systems 🔗 GitHub Profile
