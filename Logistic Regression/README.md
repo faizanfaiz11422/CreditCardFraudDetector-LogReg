@@ -1,7 +1,8 @@
-🧠 Credit Card Fraud Detection Using Logistic Regression
+# 🧠 Credit Card Fraud Detection Using Logistic Regression
+
 A robust, modular machine learning pipeline for binary classification of credit card transactions. This project blends data preprocessing, scaling, class-wise sampling, regularized logistic regression training, and CSV logging—topped with a PyQt5 UI.
 
-📦 Structure
+## 📦 Structure
 Logistic Regression/
 ├── Logistic_regression.py     # Core logic: Data prep, scaling, training
 ├── prediction.py              # Prediction pipeline (loaded weights & bias)
@@ -9,82 +10,92 @@ Logistic Regression/
 ├── creditcard1.csv            # Fraudulent transactions
 ├── README.md                  # This doc
 
-📊 Dataset Overview
-Source: Anonymized credit card transaction data
+## 📊 Dataset Overview
 
-Classes:
+- **Source:** Anonymized credit card transaction data
+- **Classes:**
+  - `Class 0`: Non-fraudulent → `creditcard.csv`
+  - `Class 1`: Fraudulent → `creditcard1.csv`
+- **Challenge:** Heavy class imbalance handled via manual undersampling and separation
 
-Class 0: Non-fraudulent (from creditcard.csv)
+## ⚙️ How It Works
 
-Class 1: Fraudulent (from creditcard1.csv)
+### 💾 Data Preprocessing
 
-Challenges: High class imbalance, requiring manual undersampling and separation.
+- Imports class-wise CSVs
+- Converts data → NumPy → Pandas → shuffled samples
+- Separates features and labels
+- Scales features using Min-Max normalization
+- Splits into Train / Cross-Validation / Test sets (60/20/20)
 
-⚙️ How It Works
-💾 Data Preprocessing
-Class-wise CSV import (creditcard.csv, creditcard1.csv)
+### 📈 Training Logic
 
-Conversion to NumPy ➝ Pandas ➝ shuffled samples
+- Implements:
+  - Sigmoid activation
+  - Cost function (w/ optional L2 regularization)
+  - Gradient descent with regularized weight updates
+- Saves weights and bias (`theta.npy`, `bias.npy`) for inference
 
-Separation of features and labels
+### 🧪 Testing
 
-Manual scaling using Min-Max normalization for each feature
+- Preprocessed test sets saved as:
+  - `test_x.npy`
+  - `test_y.npy`
+- Run inference via `prediction.py`
 
-Split into Train / Cross-Validation / Test sets (60/20/20 split)
+---
 
-📈 Training Logic
-Manual implementation of:
+## 🧮 Key Code Snippets
 
-Sigmoid function
-
-Cost function with optional L2 regularization
-
-Gradient descent with regularized weight updates
-
-Saving trained weights (theta.npy) and bias (bias.npy) for deployment
-
-🧪 Testing
-Preprocessed test sets are saved as NumPy arrays (test_x.npy, test_y.npy).
-
-Run prediction.py to perform inference using the saved weights.
-
-🧮 Key Functions (from code)
+```python
 def sigmoid(X, theta, B):
     return 1 / (1 + np.exp(-(np.dot(theta, X.T) + B)))
 
 def cost(X, y, theta):
-    # Regularized and unregularized cost computed
+    # Regularized and unregularized cost computation
     ...
 
 def gradient_descent(X, y, theta, B, alpha, iterations):
     # Weight updates via backpropagation
     ...
+```
+## 🖼️ UI & Visualization
 
-🖼️ UI & Visualization
-UI built with PyQt5
+- Developed using **PyQt5** to create an intuitive GUI for fraud prediction.
+- Users can input transaction details directly through the interface.
+- Predictions are evaluated using pre-trained logistic regression parameters.
+- **CSV logging** stores each prediction with timestamps for audit and analysis.
+- **Planned enhancements**:
+  - 📉 ROC curve visualization to assess model sensitivity and specificity.
+  - 📊 Class distribution charts for exploring data imbalance and patterns.
 
-CSV logging of predictions
+---
 
-Future enhancements could include ROC curve visualization and class distribution charts.
+## ⚙️ Installation & Usage
 
-📌 To Run
-Installation
+### 🔧 Installation
+
+```bash
 pip install numpy pandas scikit-learn PyQt5
-
-Training
+```
+### 🏁 Train the Model
+```bash
 python Logistic_regression.py
-
-Prediction
+```
+### 🧠 Run Predictions
+``` bash
 python prediction.py
+```
+### 🚀 Potential Enhancements
 
-🚀 Potential Enhancements
-Switch from manual cost calculation to scikit-learn or statsmodels for benchmarking.
+- Switch from manual cost calculation to scikit-learn or statsmodels for benchmarking.
 
-Implement ROC-AUC and Precision-Recall metrics.
+- Implement ROC-AUC and Precision-Recall metrics.
 
-Add an LLM-based UI overlay for fraud pattern explanation.
+- Add an LLM-based UI overlay for fraud pattern explanation.
 
-Create a FastAPI endpoint for real-time deployment.
+- Create a FastAPI endpoint for real-time deployment.
 
 👨‍💻 Author
-Faizan — AI/ML Engineer 🔧 Specializing in scalable, web-integrated ML/DL systems 🔗 GitHub Profile
+[**M Faizan Faiz**](https://github.com/faizanfaiz11422)
+
