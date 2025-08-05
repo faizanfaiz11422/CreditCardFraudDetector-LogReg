@@ -11,7 +11,7 @@ import pandas as pd                                                          # I
 # For the Data having Class '0'
 #'''''''''''''''''''''''''''''''
 
-dataset = pd.read_csv('E:/books/Machine Learning#/project/creditcard.csv')    # Importing data from .csv file
+dataset = pd.read_csv('creditcard.csv')    # Importing data from .csv file
 data = dataset.to_numpy()                                                     # Converting data to numpy arrays
 df = pd.DataFrame(data)                                                       # Converting arrays to Dataframe
 df.sample(frac=1)                                                             # Sampling the Dataframe
